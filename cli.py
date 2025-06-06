@@ -80,6 +80,11 @@ def main():
     stock_alert = sub.add_parser("stockalert", help="Lista itens com estoque baixo")
     stock_alert.add_argument("limite", type=int)
 
+    prod_imp = sub.add_parser("prodimport", help="Importa produtos de planilha Excel")
+    prod_imp.add_argument("arquivo")
+    prod_exp = sub.add_parser("prodexport", help="Exporta produtos para planilha Excel")
+    prod_exp.add_argument("arquivo")
+
     disc_add = sub.add_parser("discadd", help="Registra discrepancia de estoque")
     disc_add.add_argument("op_id", type=int)
     disc_add.add_argument("produto")
@@ -276,6 +281,16 @@ def main():
         else:
             for nome, qtd in itens:
                 print(f"{nome}: {qtd}")
+    elif args.cmd == "prodimport":
+        if db.importar_produtos_excel(args.arquivo):
+            print("Produtos importados")
+        else:
+            print("Falha ao importar")
+    elif args.cmd == "prodexport":
+        if db.exportar_produtos_excel(args.arquivo):
+            print(f"Produtos exportados para {args.arquivo}")
+        else:
+            print("Falha ao exportar")
     elif args.cmd == "discadd":
         did = db.registrar_discrepancia(args.op_id, args.produto, args.quantidade, args.tipo)
         if did:

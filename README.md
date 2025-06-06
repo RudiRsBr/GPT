@@ -135,6 +135,18 @@ Verificar itens com estoque baixo:
 python3 cli.py stockalert 3
 ```
 
+Importar produtos de uma planilha Excel:
+
+```bash
+python3 cli.py prodimport produtos.xlsx
+```
+
+Exportar todos os produtos para uma planilha Excel:
+
+```bash
+python3 cli.py prodexport backup.xlsx
+```
+
 Registrar discrepancias ou materiais adicionais em uma OP:
 
 ```bash
