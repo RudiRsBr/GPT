@@ -1,3 +1,5 @@
+from PyQt5.QtGui import QPixmap
+
 import sys
 from PyQt5.QtWidgets import (
     QApplication, QMainWindow, QWidget, QVBoxLayout, QPushButton,
